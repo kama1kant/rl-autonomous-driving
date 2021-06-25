@@ -91,14 +91,13 @@ class Dueling_DQN:
         self.losses = []
         self.all_rewards = []
         self.episode_reward = 0
-        self.checkpoint_path = "agents/dueling-dqn/checkpoints/dueling-dqn-highway.pth"
+        self.checkpoint_path = "single-agent/env-highway/dueling-dqn/checkpoints/dueling-dqn-highway.pth"
         self.do_render = True
         self.do_show_log = True
 
     def init_env(self):
         env_id = "highway-v0"
         self.env = gym.make(env_id)
-        # self.env.config["simulation_frequency"] = 15
 
         print("obs space = {} action space = {} ".format(self.env.observation_space.shape,
               self.env.action_space.n))
@@ -193,7 +192,7 @@ class Dueling_DQN:
 
 # standalone function evaluate model on the environment
 def evaluate():
-    checkpoint_path = "agents/dueling-dqn/checkpoints/dueling-dqn-highway.pth"
+    checkpoint_path = "single-agent/env-highway/dueling-dqn/checkpoints/dueling-dqn-highway.pth"
     model = torch.load(checkpoint_path)
     env = gym.make("highway-v0")
     state = env.reset()
